@@ -31,6 +31,7 @@ class UserManager(BaseUserManager):
             last_name = last_name,
         )
         user.is_admin = True
+        # is_active is Django's built-in authentication system
         user.is_active = True
         user.is_staff = True
         user.is_superadmin = True
@@ -75,6 +76,13 @@ class User(AbstractBaseUser):
     
     def has_module_perms(self, add_label):
         return True
+    
+    def get_role(self):
+        if self.role == 1:
+            user_role = 'Vendor'
+        elif self.role == 2:
+            user_role = 'Customer'
+        return user_role
 
 
 class UserProfile(models.Model):
