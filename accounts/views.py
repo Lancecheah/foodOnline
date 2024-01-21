@@ -9,8 +9,9 @@ from .forms import UserForm
 from .models import User, UserProfile
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.core.exceptions import PermissionDenied
 
+from django.core.exceptions import PermissionDenied
+from vendor.models import Vendor
 
 # Restrict the vendor from accessing the customer page
 def check_role_vendor(user):
